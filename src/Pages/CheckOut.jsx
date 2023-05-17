@@ -14,7 +14,7 @@ const CheckOut = () => {
         const email=form.email.value;
         const price=form.price.value;
         const order={
-            name,date,email,price
+            name,date,email,price,img,title
         }
         console.log(order)
         fetch('http://localhost:5000/checkout',{
@@ -34,7 +34,9 @@ const CheckOut = () => {
      }
     return (
         <div>
-      {title}
+   <div className='text-xl font-bold text-red-500'>
+    Product Name :- {title}
+   </div>
    
    
  
