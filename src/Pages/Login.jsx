@@ -13,8 +13,25 @@ const Login = () => {
     console.log(email,password)
     signIn(email,password)
     .then(result=>{
-      const loggedUser=result.user;
-      console.log(loggedUser)
+      const user=result.user;
+      console.log(user)
+      // Jwt token security part start....
+      const loggedUser={email: user.email};
+      console.log(loggedUser);
+      fetch('http://localhost:5000/jwt',{
+        method:"POST",
+        headers:{
+          'content-type':'application/json'
+        },
+        body:JSON.stringify(loggedUser)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        console.log('jwt response',data)
+        //----warning---//::'local storage is not the best'
+        localStorage.setItem('car-access-token',data.token);
+        
+      })
     })
     .catch(error=>{
       console.log(error)
