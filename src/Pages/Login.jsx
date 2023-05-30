@@ -3,6 +3,7 @@ import img from '../../../car-doctor-resources/assets/images/login/login.svg';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import SocialLogin from '../Home/Shared/SocialLogin';
 const Login = () => {
   const {signIn}=useContext(AuthContext)
   const handleLogin=event=>{
@@ -16,22 +17,8 @@ const Login = () => {
       const user=result.user;
       console.log(user)
       // Jwt token security part start....
-      const loggedUser={email: user.email};
-      console.log(loggedUser);
-      fetch('http://localhost:5000/jwt',{
-        method:"POST",
-        headers:{
-          'content-type':'application/json'
-        },
-        body:JSON.stringify(loggedUser)
-      })
-      .then(res=>res.json())
-      .then(data=>{
-        console.log('jwt response',data)
-        //----warning---//::'local storage is not the best'
-        localStorage.setItem('car-access-token',data.token);
-        
-      })
+     
+     
     })
     .catch(error=>{
       console.log(error)
@@ -64,7 +51,9 @@ const Login = () => {
               </div>
               <div className="mt-6 form-control">
                 <button className="btn btn-primary">Login</button>
+              
               </div>
+              <SocialLogin/>
             </form>
             <p>  Are you new ? <Link to="/registration">SingUp</Link></p>
           </div>

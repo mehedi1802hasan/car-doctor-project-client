@@ -3,6 +3,7 @@ import img from '../../../car-doctor-resources/assets/images/login/login.svg'
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import SocialLogin from '../Home/Shared/SocialLogin';
 const Registration = () => {
     const {createUser}=useContext(AuthContext);
     const handleSingUp=event=>{
@@ -61,6 +62,7 @@ const Registration = () => {
               <div className="mt-6 form-control">
                 <button className="btn btn-primary">Registraiton</button>
               </div>
+              <SocialLogin/>
             </form>
           <p>  Have you account? <Link to="/login">Login</Link></p>
           </div>
